@@ -1,0 +1,234 @@
+html {
+    scroll-behavior: smooth;
+}
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: #ffffff;
+    color: #333;
+    line-height: 1.6;
+}
+
+/* Header */
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+    background-color: #0d1b2a;
+    color: #ffffff;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    transition: background-color 0.3s ease;
+}
+header.scrolled {
+    background-color: #1b263b;
+}
+.logo {
+    font-size: 28px;
+    font-weight: 600;
+}
+nav {
+    display: flex;
+    gap: 20px;
+}
+nav a {
+    color: #ffffff;
+    text-decoration: none;
+    font-size: 16px;
+    transition: color 0.3s ease;
+}
+nav a:hover {
+    color: #e63946;
+}
+
+/* Hero */
+.hero {
+    height: 100vh;
+    background: linear-gradient(to bottom right, #1b263b, #415a77);
+    color: #ffffff;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 20px;
+}
+.hero h1 {
+    font-size: 3.5rem;
+    margin-bottom: 20px;
+}
+.hero p {
+    font-size: 1.2rem;
+    margin-bottom: 30px;
+    max-width: 600px;
+}
+.hero .btn-primary {
+    background: #e63946;
+    padding: 15px 40px;
+    color: #ffffff;
+    font-size: 18px;
+    font-weight: 600;
+    border: none;
+    border-radius: 50px;
+    cursor: pointer;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    transition: background 0.3s, transform 0.2s;
+    text-decoration: none;
+}
+.hero .btn-primary:hover {
+    background: #d62828;
+    transform: scale(1.05);
+}
+
+/* About */
+.about-section {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    padding: 60px 20px;
+    background: linear-gradient(to right, #6fc1dd, #4f75ae);
+    color: #333;
+}
+
+.about-content {
+    max-width: 600px;
+    margin: 20px;
+    text-align: center;
+}
+
+.about-content h2 {
+    font-size: 42px;
+    margin-bottom: 20px;
+    color: #1e1e2f;
+}
+
+.about-content p {
+    font-size: 18px;
+    line-height: 1.8;
+    margin: 10px auto;
+}
+
+/* eBooks */
+.ebooks-section {
+    padding: 50px 20px;
+    text-align: center;
+    background: #f4f4f9;
+}
+
+.ebooks-section h2 {
+    font-size: 36px;
+    margin-bottom: 20px;
+    color: #1b263b;
+    text-transform: uppercase;
+}
+
+.ebook-list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+}
+
+.ebook-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #ffffff;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    width: 200px;
+}
+
+.ebook-item img {
+    width: 160px; 
+    height: 240px; 
+    object-fit: cover; 
+    border-radius: 5px;
+    margin-bottom: 15px;
+}
+
+.ebook-details h3, .ebook-details p {
+    text-align: center;
+    margin: 5px 0;
+    overflow: hidden; 
+    text-overflow: ellipsis;
+    white-space: nowrap; 
+    max-width: 180px; 
+}
+
+.ebook-item:hover {
+    transform: scale(1.05);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+}
+
+.download-link {
+    background: #1b263b;
+    color: #ffffff;
+    border: none;
+    padding: 5px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background 0.3s;
+    text-decoration: none;
+}
+
+.download-link:hover {
+    background: #e63946;
+}
+
+/* Search */
+
+.search-bar {
+    margin: 20px auto;
+}
+
+.search-bar input {
+    width: 80%;
+    max-width: 600px;
+    padding: 12px 20px;
+    font-size: 16px;
+    border: 2px solid #ccc;
+    border-radius: 50px;
+    transition: border-color 0.3s;
+}
+.search-bar input:focus {
+    border-color: #e63946;
+    outline: none;
+}
+
+/* Footer */
+footer {
+    padding: 20px;
+    background-color: #0d1b2a;
+    color: #ffffff;
+    text-align: center;
+    margin-top: 40px;
+}
+footer a {
+    color: #e63946;
+    text-decoration: none;
+}
+footer a:hover {
+    color: #d62828;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .hero h1 {
+        font-size: 2.5rem;
+    }
+    .hero p {
+        font-size: 1rem;
+    }
+}
