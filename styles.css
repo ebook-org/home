@@ -87,35 +87,6 @@ nav a:hover {
     transform: scale(1.05);
 }
 
-/* Natal */
-.natal-section {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    align-items: center;
-    padding: 60px 20px;
-    background: linear-gradient(to right, #1aff00a7, #ff0707aa);
-    color: #333;
-}
-
-.natal-content {
-    max-width: 600px;
-    margin: 20px;
-    text-align: center;
-}
-
-.natal-content h2 {
-    font-size: 42px;
-    margin-bottom: 20px;
-    color: #1e1e2f;
-}
-
-.natal-content p {
-    font-size: 18px;
-    line-height: 1.8;
-    margin: 10px auto;
-}
-
 /* About */
 .about-section {
     display: flex;
