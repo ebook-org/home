@@ -1,58 +1,75 @@
+/* Variáveis Globais */
+:root {
+    --primary-color: #e63946;
+    --secondary-color: #1b263b;
+    --background-color: #f4f4f9;
+    --text-color: #333;
+    --white-color: #ffffff;
+}
+
+/* Global Styles */
 html {
     scroll-behavior: smooth;
 }
+
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
+
 body {
     font-family: 'Poppins', sans-serif;
-    background-color: #ffffff;
-    color: #333;
+    background-color: var(--background-color);
+    color: var(--text-color);
     line-height: 1.6;
 }
 
-/* Header */
+/* Header Styles */
 header {
     display: flex;
     justify-content: space-between;
     align-items: center;
     padding: 20px;
-    background-color: #0d1b2a;
-    color: #ffffff;
+    background-color: var(--secondary-color);
+    color: var(--white-color);
     position: sticky;
     top: 0;
     z-index: 1000;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
     transition: background-color 0.3s ease;
 }
+
 header.scrolled {
     background-color: #1b263b;
 }
+
 .logo {
     font-size: 28px;
     font-weight: 600;
 }
+
 nav {
     display: flex;
     gap: 20px;
 }
+
 nav a {
-    color: #ffffff;
+    color: var(--white-color);
     text-decoration: none;
     font-size: 16px;
     transition: color 0.3s ease;
 }
-nav a:hover {
-    color: #e63946;
+
+nav a:hover, nav a:focus {
+    color: var(--primary-color);
 }
 
-/* Hero */
+/* Hero Section */
 .hero {
     height: 100vh;
-    background: linear-gradient(to bottom right, #1b263b, #415a77);
-    color: #ffffff;
+    background: linear-gradient(to bottom right, var(--secondary-color), #415a77);
+    color: var(--white-color);
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -60,19 +77,22 @@ nav a:hover {
     text-align: center;
     padding: 20px;
 }
+
 .hero h1 {
     font-size: 3.5rem;
     margin-bottom: 20px;
 }
+
 .hero p {
     font-size: 1.2rem;
     margin-bottom: 30px;
     max-width: 600px;
 }
+
 .hero .btn-primary {
-    background: #e63946;
+    background: var(--primary-color);
     padding: 15px 40px;
-    color: #ffffff;
+    color: var(--white-color);
     font-size: 18px;
     font-weight: 600;
     border: none;
@@ -82,12 +102,13 @@ nav a:hover {
     transition: background 0.3s, transform 0.2s;
     text-decoration: none;
 }
+
 .hero .btn-primary:hover {
     background: #d62828;
     transform: scale(1.05);
 }
 
-/* About */
+/* About Section */
 .about-section {
     display: flex;
     flex-wrap: wrap;
@@ -95,7 +116,7 @@ nav a:hover {
     align-items: center;
     padding: 60px 20px;
     background: linear-gradient(to right, #6fc1dd, #4f75ae);
-    color: #333;
+    color: var(--text-color);
 }
 
 .about-content {
@@ -116,17 +137,17 @@ nav a:hover {
     margin: 10px auto;
 }
 
-/* eBooks */
+/* eBooks Section */
 .ebooks-section {
     padding: 50px 20px;
     text-align: center;
-    background: #f4f4f9;
+    background: var(--background-color);
 }
 
 .ebooks-section h2 {
     font-size: 36px;
     margin-bottom: 20px;
-    color: #1b263b;
+    color: var(--secondary-color);
     text-transform: uppercase;
 }
 
@@ -141,13 +162,16 @@ nav a:hover {
     display: flex;
     flex-direction: column;
     align-items: center;
-    background-color: #ffffff;
+    background-color: var(--white-color);
     border: 1px solid #ddd;
     border-radius: 10px;
     padding: 20px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     transition: transform 0.3s ease, box-shadow 0.3s ease;
     width: 200px;
+    opacity: 0;
+    transform: translateY(20px);
+    animation: fadeInUp 0.5s ease forwards;
 }
 
 .ebook-item img {
@@ -173,8 +197,8 @@ nav a:hover {
 }
 
 .download-link {
-    background: #1b263b;
-    color: #ffffff;
+    background: var(--secondary-color);
+    color: var(--white-color);
     border: none;
     padding: 5px 15px;
     border-radius: 5px;
@@ -184,11 +208,10 @@ nav a:hover {
 }
 
 .download-link:hover {
-    background: #e63946;
+    background: var(--primary-color);
 }
 
-/* Search */
-
+/* Search Bar */
 .search-bar {
     margin: 20px auto;
 }
@@ -202,39 +225,53 @@ nav a:hover {
     border-radius: 50px;
     transition: border-color 0.3s;
 }
+
 .search-bar input:focus {
-    border-color: #e63946;
+    border-color: var(--primary-color);
     outline: none;
 }
 
-.search-bar p {
-    color: #e63946;
-    font-size: 16px;
-    margin-top: 10px;
+/* Animations */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
-/* Footer */
+/* Footer Styles */
 footer {
     padding: 20px;
-    background-color: #0d1b2a;
-    color: #ffffff;
+    background-color: var(--secondary-color);
+    color: var(--white-color);
     text-align: center;
     margin-top: 40px;
 }
+
 footer a {
-    color: #e63946;
+    color: var(--primary-color);
     text-decoration: none;
 }
+
 footer a:hover {
     color: #d62828;
 }
 
-/* Responsive */
+/* Responsiveness */
 @media (max-width: 768px) {
     .hero h1 {
         font-size: 2.5rem;
     }
+
     .hero p {
         font-size: 1rem;
+    }
+
+    .ebook-item {
+        width: 100%;
     }
 }
