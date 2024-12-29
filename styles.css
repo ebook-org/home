@@ -137,6 +137,90 @@ nav a:hover, nav a:focus {
     margin: 10px auto;
 }
 
+/* Seção Destaques da Semana */
+.highlights-section {
+    padding: 60px 20px;
+    background-color: var(--background-color);
+    text-align: center;
+}
+
+.highlights-section h2 {
+    font-size: 36px;
+    color: var(--secondary-color);
+    margin-bottom: 20px;
+    text-transform: uppercase;
+}
+
+.highlights-section p {
+    font-size: 18px;
+    color: var(--text-color);
+    margin-bottom: 40px;
+}
+
+.highlight-list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+}
+
+.highlight-item {
+    display: flex;
+    background-color: var(--white-color);
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s, box-shadow 0.3s;
+    max-width: 700px;
+    overflow: hidden;
+}
+
+.highlight-item:hover {
+    transform: scale(1.02);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+}
+
+.highlight-img {
+    width: 40%;
+    object-fit: cover;
+    border-top-left-radius: 10px;
+    border-bottom-left-radius: 10px;
+}
+
+.highlight-details {
+    padding: 20px;
+    text-align: left;
+}
+
+.highlight-details h3 {
+    font-size: 24px;
+    color: var(--secondary-color);
+    margin-bottom: 10px;
+}
+
+.highlight-details p {
+    font-size: 16px;
+    margin-bottom: 10px;
+    line-height: 1.6;
+    color: var(--text-color);
+}
+
+.btn-highlight {
+    display: inline-block;
+    background-color: var(--primary-color);
+    color: var(--white-color);
+    padding: 10px 20px;
+    border-radius: 5px;
+    text-decoration: none;
+    font-size: 16px;
+    transition: background 0.3s ease;
+}
+
+.btn-highlight:hover {
+    background-color: #d62828;
+}
+
+
 /* eBooks Section */
 .ebooks-section {
     padding: 50px 20px;
