@@ -5,6 +5,8 @@
     --background-color: #f4f4f9;
     --text-color: #333;
     --white-color: #ffffff;
+    --highlight-color: #d62828;
+    --tertiary-color: #6fc1dd;
 }
 
 /* Global Styles */
@@ -41,7 +43,7 @@ header {
 }
 
 header.scrolled {
-    background-color: #1b263b;
+    background-color: var(--tertiary-color);
 }
 
 .logo {
@@ -68,7 +70,7 @@ nav a:hover, nav a:focus {
 /* Hero Section */
 .hero {
     height: 100vh;
-    background: linear-gradient(to bottom right, var(--secondary-color), #415a77);
+    background: linear-gradient(to bottom right, var(--secondary-color), var(--highlight-color));
     color: var(--white-color);
     display: flex;
     flex-direction: column;
@@ -104,7 +106,7 @@ nav a:hover, nav a:focus {
 }
 
 .hero .btn-primary:hover {
-    background: #d62828;
+    background: var(--highlight-color);
     transform: scale(1.05);
 }
 
@@ -298,11 +300,13 @@ nav a:hover, nav a:focus {
 /* Search Bar */
 .search-bar {
     margin: 20px auto;
+    position: relative;
+    width: 80%;
+    max-width: 600px;
 }
 
 .search-bar input {
-    width: 80%;
-    max-width: 600px;
+    width: 100%;
     padding: 12px 20px;
     font-size: 16px;
     border: 2px solid #ccc;
@@ -313,6 +317,15 @@ nav a:hover, nav a:focus {
 .search-bar input:focus {
     border-color: var(--primary-color);
     outline: none;
+}
+
+.search-bar .search-icon {
+    position: absolute;
+    right: 15px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 20px;
+    color: #ccc;
 }
 
 /* Animations */
@@ -345,7 +358,7 @@ footer a:hover {
     color: #d62828;
 }
 
-/* Responsiveness */
+/* Responsividade */
 @media (max-width: 768px) {
     .hero h1 {
         font-size: 2.5rem;
@@ -355,7 +368,8 @@ footer a:hover {
         font-size: 1rem;
     }
 
-    .ebook-item {
-        width: 100%;
+    .highlight-carousel {
+        flex-direction: column;
     }
 }
+
