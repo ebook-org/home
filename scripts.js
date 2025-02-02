@@ -1,10 +1,11 @@
-// Obtém os elementos principais
+// ==============================
+// BUSCA E FILTRO DOS EBOOKS
+// ==============================
 const searchInput = document.getElementById('searchInput');
 const ebookCards = document.querySelectorAll('.ebook-item');
 const ebookSection = document.querySelector('.ebook-list');
 const noResultsMessage = document.createElement('p');
 
-// Configura a mensagem de "Nenhum resultado encontrado"
 noResultsMessage.textContent = 'Nenhum eBook encontrado.';
 noResultsMessage.style.display = 'none';
 noResultsMessage.style.color = '#e63946';
@@ -14,60 +15,83 @@ noResultsMessage.setAttribute('role', 'alert');
 ebookSection.appendChild(noResultsMessage);
 
 /**
- * Função para normalizar o texto (remover espaços extras e converter para minúsculas).
- * @param {string} text - O texto a ser normalizado.
- * @returns {string} O texto normalizado.
+ * Normaliza o texto.
  */
 function normalizeText(text) {
-    return text.trim().toLowerCase();
+  return text.trim().toLowerCase();
 }
 
 /**
- * Função para aplicar debounce a uma função, retardando sua execução até que o tempo de espera termine.
- * @param {Function} func - A função a ser executada com debounce.
- * @param {number} wait - Tempo de espera em milissegundos.
- * @returns {Function} Uma função com debounce.
+ * Aplica debounce para evitar execuções excessivas.
  */
-function debounceInputHandler(func, wait) {
-    let timeout;
-    return function (...args) {
-        clearTimeout(timeout);
-        timeout = setTimeout(() => func.apply(this, args), wait);
-    };
+function debounce(func, wait) {
+  let timeout;
+  return function(...args) {
+    clearTimeout(timeout);
+    timeout = setTimeout(() => func.apply(this, args), wait);
+  };
 }
 
 /**
- * Filtra os eBooks com base na consulta fornecida.
- * @param {string} query - O texto de busca fornecido pelo usuário.
- * @param {NodeList} ebookCards - Os cartões de eBooks disponíveis.
- * @returns {boolean} Retorna true se houver resultados; caso contrário, false.
+ * Destaca o texto que corresponde à query.
+ */
+function highlightText(element, query) {
+  if (!query) return element.textContent;
+  const regex = new RegExp(`(${query})`, 'gi');
+  return element.textContent.replace(regex, '<mark>$1</mark>');
+}
+
+/**
+ * Filtra os eBooks e destaca títulos conforme a pesquisa.
  */
 function filterEbooks(query, ebookCards) {
-    let hasResults = false;
+  let hasResults = false;
+  ebookCards.forEach(card => {
+    const titleEl = card.querySelector('h3');
+    const originalTitle = titleEl.getAttribute('data-original') || titleEl.textContent;
+    const title = normalizeText(originalTitle);
+    const category = normalizeText(card.dataset.category || '');
+    const author = normalizeText(card.dataset.author || '');
 
-    ebookCards.forEach(card => {
-        const title = normalizeText(card.querySelector('h3').textContent);
-        const category = normalizeText(card.dataset.category || '');
-        const author = normalizeText(card.dataset.author || '');
-
-        if (title.includes(query) || category.includes(query) || author.includes(query)) {
-            card.style.display = 'flex';
-            hasResults = true;
-        } else {
-            card.style.display = 'none';
-        }
-    });
-
-    return hasResults;
+    if (title.includes(query) || category.includes(query) || author.includes(query)) {
+      card.style.display = 'flex';
+      hasResults = true;
+      // Atualiza com destaque
+      titleEl.innerHTML = highlightText({ textContent: originalTitle }, query);
+    } else {
+      card.style.display = 'none';
+      // Restaura o texto original
+      titleEl.textContent = originalTitle;
+    }
+  });
+  return hasResults;
 }
 
-// Adiciona o evento de entrada ao campo de busca
-searchInput.addEventListener('input', debounceInputHandler(function (event) {
+// Salva o título original em cada cartão (para restauração após destaque)
+ebookCards.forEach(card => {
+  const titleEl = card.querySelector('h3');
+  titleEl.setAttribute('data-original', titleEl.textContent);
+});
+
+if (searchInput) {
+  searchInput.addEventListener('input', debounce((event) => {
     const query = normalizeText(event.target.value);
     const hasResults = filterEbooks(query, ebookCards);
-
     noResultsMessage.style.display = hasResults ? 'none' : 'block';
-}, 300));
+  }, 300));
+}
+
+// ==============================
+// MODAIS COM ACESSIBILIDADE
+// ==============================
+function openModal(modal, triggerButton) {
+  modal.classList.add('active');
+  modal.setAttribute('aria-modal', 'true');
+  // Armazena o ID do elemento que disparou o modal para retornar o foco
+  modal.dataset.trigger = triggerButton.id;
+  const closeBtn = modal.querySelector('.close-button');
+  if (closeBtn) closeBtn.focus();
+}
 
 // Modal Termos de Uso
 const modal = document.getElementById('modal-termos');
